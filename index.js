@@ -48,5 +48,15 @@ app.get('/', (_, res) => res.send('Bot is running'));
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`HTTP server running on ${PORT}`));
 
-client.login(process.env.TOKEN);
-console.log('TOKEN length:', process.env.TOKEN?.length);
+const TOKEN = process.env.TOKEN;
+
+console.log('TOKEN length:', TOKEN?.length);
+
+if (!TOKEN) {
+    console.error('❌ TOKEN is undefined');
+    process.exit(1);
+}
+
+client.login(TOKEN)
+    .then(() => console.log('✅ Discord login success'))
+    .catch(err => console.error('❌ Discord login failed', err));

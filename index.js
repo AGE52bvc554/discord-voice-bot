@@ -49,3 +49,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`HTTP server running on ${PORT}`));
 
 client.login(process.env.TOKEN);
+console.log('TOKEN length:', process.env.TOKEN?.length);
